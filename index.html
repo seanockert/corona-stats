@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<title>My Corona - COVID-19 Stats</title>
+		<title>COVID-19 Stats</title>
 		<meta
 			name="description"
 			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
@@ -61,25 +61,6 @@
 			.container {
 				margin: 0 auto;
 				max-width: 100%;
-			}
-			
-			header, main {
-				padding: 0.75rem;
-			}
-			
-			header {
-				background: linear-gradient(-30deg, #4c48bb 10%, #6662EB);
-				color: #fff;
-				overflow: hidden;
-				padding: 1.5rem 0.75rem 1.8rem 0.75rem;
-				position: relative;
-			}
-			
-			#header-bottom {
-				position: absolute;
-		    bottom: -1px;
-		    width: 100%;
-		    height: 7px;
 			}
 
 			button,
@@ -175,12 +156,6 @@
 				color: #aaa;
 			}
 
-			h1 {
-				font-size: 2rem;
-				line-height: 1;
-				margin: 0 0 0.375rem 0;
-			}
-
 			.flex {
 				align-items: center;
 				display: flex;
@@ -213,10 +188,6 @@
 				flex-wrap: nowrap;
 			}
 
-			.block-grid-2 > * {
-				flex: 0 0 50%;
-			}
-
 			.block-grid-3 > * {
 				flex: 0 0 33.33%;
 			}
@@ -225,6 +196,56 @@
 				flex: 0 0 25%;
 			}
 
+			.loading {
+				background-color: #fff;
+				border-radius: 4px;
+				margin: 4rem auto;
+				padding: 1.5rem;
+				text-align: center;
+				width: 200px;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.text-center {
+				text-align: center;
+			}
+			
+			.text-right {
+				text-align: right;
+			}
+				
+			header, main {
+				padding: 0.75rem;
+			}
+			
+			header {
+				background: linear-gradient(-30deg, #4c48bb 10%, #6662EB);
+				color: #fff;
+				overflow: hidden;
+				padding: 1.5rem 0.75rem 1.8rem 0.75rem;
+				position: relative;
+			}
+			
+			#header-bottom {
+				position: absolute;
+		    bottom: -1px;
+		    width: 100%;
+		    height: 7px;
+			}			
+			
+			h1 {
+				font-size: 2rem;
+				line-height: 1;
+				margin: 0 0 0.375rem 0;
+			}
+
+			.date {
+				opacity: 0.6;
+			}
+			
 			.box {
 				padding: 1.5rem;
 				background: #fff;
@@ -232,10 +253,9 @@
 			}
 
 			h3 {
-				font-size: 1.5rem;
+				font-size: 1.4rem;
 				line-height: 1.2;
 				margin-top: 0;
-				text-align: center;
 			}
 			
 			.stats {
@@ -268,7 +288,7 @@
 				background-color: #ffe3ec;
 				border-radius: 4px;
 				display: inline-block;
-				font-size: 0.8rem;
+				font-size: 0.875rem;
 				font-weight: normal;
 				padding: 3px;
 				position: relative;
@@ -295,46 +315,29 @@
 				width: 1.3rem;
 			}
 
-			.date {
-				opacity: 0.6;
-			}
-
-			.loading {
-				background-color: #fff;
-				border-radius: 4px;
-				margin: 4rem auto;
-				padding: 1.5rem;
-				text-align: center;
-				width: 200px;
-			}
-
-			.hidden {
-				display: none;
-			}
-
-			.text-center {
-				text-align: center;
-			}
-
-			.active-country {
+			.featured {
 				background-color: rgba(246,245,255,0.9);
 				backdrop-filter: blur(4px);
 				overflow: hidden;
 				padding: 1.5rem;
 			}
 
-			.active-country h3 {
+			.featured h3 {
 				margin: 0;
 			}
 
-			.active-country .stats {
+			.featured .stats {
 				align-items: center;
 			}
 			
-			.active-country .chart {
+			.featured .stats strong {
+				font-size: 1.4rem;
+			}
+			
+			.featured .chart {
 				bottom: -1rem;
 				color: #d0cfe8;
-				font-size: 16px;
+				font-size: 1rem;
 				height: 80px;
 				left: -1.2rem;
 				position: absolute;
@@ -355,8 +358,9 @@
 				border: none;
 				border-radius: 4px;
 				color: #fff;
-				font-size: 1.2rem;
+				font-size: 1.25rem;
 				margin-top: 0.75rem;
+				max-width: 34rem;
 				padding: 0.75rem;
 				transition: all 0.15s ease-out;
 				width: 100%;
@@ -415,16 +419,22 @@
 				opacity: 0.8;
 			}
 			
+			@media screen and (min-width: 1440px) {
+				.box {
+					padding: 2rem;
+				}
+			}
+			
 			@media screen and (max-width: 1028px) {
 				[class*='block-grid-'] > * {
 					flex: 0 0 50%;
 				}	
 						
-				.active-country {
+				.featured {
 					text-align: center;
 				}
 				
-				.active-country .block-grid-4 > * {
+				.featured .block-grid-4 > * {
 					flex: 0 0 25%;
 				}		
 				
@@ -447,20 +457,24 @@
 				header label {
 					display: none;
 				}
+				
+				#search { 
+					max-width: 100%;	
+				}
 	
-				.active-country {
+				.featured {
 					padding: 1.5rem 0 2.5rem 0;	
 				}
 				
-				.active-country .block-grid-4 > * {
+				.featured .block-grid-4 > * {
 					flex: 0 0 33.33%;
 				}		
 				
-				.active-country .block-grid-4 > :first-child {
+				.featured .block-grid-4 > :first-child {
 					flex: 0 0 100%;
 				}		
 				
-				.active-country .chart {
+				.featured .chart {
 					bottom: -1.5rem;
 					left: 0;
 				}
@@ -473,7 +487,7 @@
 					padding: 1.5rem 0.75rem;
 				}
 
-				.active-country h3,
+				.featured h3,
 				.date {
 					margin-bottom: 0.75rem;
 				}
@@ -484,8 +498,12 @@
 					padding: 0.75rem 0;
 				}
 				
-				.active-country .chart {
+				.featured .chart {
 					padding: 0 0.75rem;
+				}
+				
+				.stats strong {
+					font-size: 1.2rem;
 				}
 				
 				[class*='block-grid-'] [class*='block-grid-'] {
@@ -553,82 +571,84 @@
 						</div>
 					</div>
 
-					<div class="flex">
-						<label>Sort by</label>
-						<button
-							@click="sortBy('TotalConfirmed')"
-							:class="{ 'active': sort == 'TotalConfirmed' }"
-						>
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								height="18"
-								width="18"
-								role="img"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 512 512"
+					<div v-if="countries" class="text-right">
+						<div class="flex">
+							<label>Sort by</label>
+							<button
+								@click="sortBy('TotalConfirmed')"
+								:class="{ 'active': sort == 'TotalConfirmed' }"
 							>
-								<path
-									fill="currentColor"
-									d="M464 128h-80V80c0-26.5-21.5-48-48-48H176c-26.5 0-48 21.5-48 48v48H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48zM192 96h128v32H192V96zm160 248c0 4.4-3.6 8-8 8h-56v56c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-56h-56c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h56v-56c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v56h56c4.4 0 8 3.6 8 8v48z"
-								></path>
-							</svg>
-							Cases
-						</button>
-						<button
-							@click="sortBy('TotalDeaths')"
-							:class="{ 'deaths': true, 'active': sort == 'TotalDeaths' }"
-						>
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								height="18"
-								width="18"
-								role="img"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 512 512"
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									height="18"
+									width="18"
+									role="img"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 512 512"
+								>
+									<path
+										fill="currentColor"
+										d="M464 128h-80V80c0-26.5-21.5-48-48-48H176c-26.5 0-48 21.5-48 48v48H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48zM192 96h128v32H192V96zm160 248c0 4.4-3.6 8-8 8h-56v56c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-56h-56c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h56v-56c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v56h56c4.4 0 8 3.6 8 8v48z"
+									></path>
+								</svg>
+								Cases
+							</button>
+							<button
+								@click="sortBy('TotalDeaths')"
+								:class="{ 'deaths': true, 'active': sort == 'TotalDeaths' }"
 							>
-								<path
-									fill="currentColor"
-									d="M256 0C114.6 0 0 100.3 0 224c0 70.1 36.9 132.6 94.5 173.7 9.6 6.9 15.2 18.1 13.5 29.9l-9.4 66.2c-1.4 9.6 6 18.2 15.7 18.2H192v-56c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v56h64v-56c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v56h77.7c9.7 0 17.1-8.6 15.7-18.2l-9.4-66.2c-1.7-11.7 3.8-23 13.5-29.9C475.1 356.6 512 294.1 512 224 512 100.3 397.4 0 256 0zm-96 320c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64zm192 0c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"
-								></path>
-							</svg>
-							Deaths
-						</button>
-						<button
-							@click="sortBy('TotalRecovered')"
-							:class="{ 'recovered': true, 'active': sort == 'TotalRecovered' }"
-						>
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								height="18"
-								width="18"
-								role="img"
-								viewBox="0 0 496 520"
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									height="18"
+									width="18"
+									role="img"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 512 512"
+								>
+									<path
+										fill="currentColor"
+										d="M256 0C114.6 0 0 100.3 0 224c0 70.1 36.9 132.6 94.5 173.7 9.6 6.9 15.2 18.1 13.5 29.9l-9.4 66.2c-1.4 9.6 6 18.2 15.7 18.2H192v-56c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v56h64v-56c0-4.4 3.6-8 8-8h16c4.4 0 8 3.6 8 8v56h77.7c9.7 0 17.1-8.6 15.7-18.2l-9.4-66.2c-1.7-11.7 3.8-23 13.5-29.9C475.1 356.6 512 294.1 512 224 512 100.3 397.4 0 256 0zm-96 320c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64zm192 0c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"
+									></path>
+								</svg>
+								Deaths
+							</button>
+							<button
+								@click="sortBy('TotalRecovered')"
+								:class="{ 'recovered': true, 'active': sort == 'TotalRecovered' }"
 							>
-								<path
-									fill="currentColor"
-									d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-								></path>
-							</svg>
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									height="18"
+									width="18"
+									role="img"
+									viewBox="0 0 496 520"
+								>
+									<path
+										fill="currentColor"
+										d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
+									></path>
+								</svg>
 
-							Recovered
-						</button>
+								Recovered
+							</button>
+						</div>
+						<div>
+							<label for="search" class="hidden">Search</label>
+							<input
+								type="search"
+								placeholder="Filter by countries eg. china,italy"
+								id="search"
+								v-model="query"
+								@input="filterCountries()"
+								autocapitalize="off"
+							/>
+						</div>
 					</div>
 				</div>
-				
-				<section v-if="countries">
-					<label for="search" class="hidden">Search</label>
-					<input
-						type="search"
-						placeholder="Filter by countries eg. china,italy"
-						id="search"
-						@input="filterCountries($event.target.value)"
-						autocapitalize="off"
-					/>
-				</section>
-				
+
 				<svg id="header-bottom" viewBox="0 0 727 11" xmlns:xlink="http://www.w3.org/1999/xlink">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <polyline id="Path" fill="#F6F5FE" points="0 11.1930253 15.8912474 10.1168534 162.431037 0.193025303 232.241561 11.1930253 315.805446 0.193025303 513.38607 11.1930253 616.870743 5.6930253 691 11.1930253"></polyline>
@@ -637,7 +657,7 @@
 			</header>
 			
 			<main>
-				<section v-if="activeCountryStats" class="active-country sticky">
+				<section v-if="activeCountryStats && query == ''" class="featured sticky">
 					<ul class="block-grid-4 stats">
 						<li>
 							<h3>{{activeCountryStats.Country}}</h3>
@@ -653,7 +673,7 @@
 							   />
 							</svg>
 						</li>
-						<li class="cases">
+						<li class="cases text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -679,7 +699,7 @@
 								>
 							</span>
 						</li>
-						<li class="deaths">
+						<li class="deaths text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -708,7 +728,7 @@
 								>
 							</span>
 						</li>
-						<li class="recovered">
+						<li class="recovered text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -736,12 +756,12 @@
 						</li>
 					</ul>
 				</section>
-				<section v-if="globalStats" class="active-country">
+				<section v-if="globalStats && query == ''" class="featured">
 					<ul class="block-grid-4 stats">
 						<li>
 							<h3>Global</h3>
 						</li>
-						<li class="cases">
+						<li class="cases text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -764,7 +784,7 @@
 								>
 							</span>
 						</li>
-						<li class="deaths">
+						<li class="deaths text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -786,7 +806,7 @@
 								>
 							</span>
 						</li>
-						<li class="recovered">
+						<li class="recovered text-center">
 							<svg
 								aria-hidden="true"
 								focusable="false"

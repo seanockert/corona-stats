@@ -1,0 +1,33 @@
+# Vue compiled files
+/dist
+
+# Composer and NPM
+/node_modules
+/vendor
+
+# OS generated files
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Ignore archived and temp files
+*.old
+*.backup
+*.map
+.env
+.sass-cache/
+_unused/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
