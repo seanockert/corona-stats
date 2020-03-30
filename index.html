@@ -19,7 +19,7 @@
 			type="text/css"
 		/>
 
-		<meta content="My Corona - COVID-19 Stats" property="og:title" />
+		<meta content="COVID-19 Stats" property="og:title" />
 		<meta
 			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
 			property="og:description"
@@ -29,7 +29,7 @@
 		<meta content="315" property="og:image:height" />
 		<meta content="" property="og:url" />
 
-		<meta content="My Corona - COVID-19 Stats" property="twitter:title" />
+		<meta content="COVID-19 Stats" property="twitter:title" />
 		<meta
 			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
 			property="twitter:description"
@@ -203,6 +203,13 @@
 				padding: 1.5rem;
 				text-align: center;
 				width: 200px;
+			}
+			
+			.loading button {
+				color: inherit;
+				font-weight: normal;
+				padding: 0;
+				text-decoration: underline;
 			}
 
 			.hidden {
@@ -916,9 +923,11 @@
 										</li>
 									</ul>
 								</div>
-							</li>
+							</li>		
 						</template>
 					</ul>
+					
+					<p v-show="filteredCountries.length == 0" class="loading">No countries found. <button @click="filterCountries(true)">Show all</button></p>
 				</section>
 			</main>
 			<footer>

@@ -68,16 +68,21 @@ new Vue({
 				this.fetchData();
 			}
 		},
-		filterCountries() {
-			var q = this.query.split(',');
+		filterCountries(clear) {
+			if (this.query.length != '' && !clear) {
+				var q = this.query.split(',');
 
-			this.filteredCountries = this.countries.filter(country => {
-				for (var i = q.length - 1; i >= 0; i--) {
-					if (q[i].trim() != '' && country.Slug.indexOf(q[i].trim().toLowerCase()) != -1) {
-						return country;
+				this.filteredCountries = this.countries.filter(country => {
+					for (var i = q.length - 1; i >= 0; i--) {
+						if (q[i].trim() != '' && country.Slug.indexOf(q[i].trim().toLowerCase()) != -1) {
+							return country;
+						}
 					}
-				}
-			});
+				});
+			} else {
+				this.query = '';
+				this.filteredCountries = this.countries;
+			}
 		},
 		fetchData() {
 			this.countries = null;
@@ -148,6 +153,10 @@ new Vue({
 			var urlParams = new URLSearchParams(window.location.search);
 			var sort = urlParams.get('sort');
 
+			// Accept 'search' or 'filter'
+			var search = urlParams.get('search');
+			var filter = urlParams.get('filter');
+
 			if (sort) {
 				var sortOption = '';
 
@@ -162,7 +171,19 @@ new Vue({
 				this.sort = sortOption;
 			}
 
-			this.filteredCountries = this.sortBy(this.sort, this.countries);
+			this.filteredCountries = this.sortBy(this.sort, this.filteredCountries);
+
+			if (search) {
+				this.query = search;
+			}
+
+			if (filter) {
+				this.query = filter;
+			}
+
+			if (search || filter) {
+				this.filterCountries();
+			}
 		},
 		setActiveCountry() {
 			fetch('https://ipapi.co/json/')
@@ -198,9 +219,10 @@ new Vue({
 			Array.prototype.scaleBetween = function(scaledMin, scaledMax) {
 				var max = Math.max.apply(Math, this);
 				var min = Math.min.apply(Math, this);
-				return this.map(num =>
-					(100 - ((scaledMax - scaledMin) * (num - min)) / (max - min) + scaledMin).toFixed(2)
-				);
+				return this.map(num => {
+					//if (num > 0) num = Math.log(num);
+					return 100 - ((scaledMax - scaledMin) * (num - min)) / (max - min) + scaledMin;
+				});
 			};
 
 			this.chartPoints = '';
@@ -224,7 +246,7 @@ new Vue({
 		},
 		sortBy(field, arr = null) {
 			if (!arr) {
-				arr = this.countries;
+				arr = this.filteredCountries;
 			}
 
 			this.sort = field ? field : 'Country';
