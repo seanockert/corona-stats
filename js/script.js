@@ -21,6 +21,7 @@ new Vue({
 		filteredCountries: null,
 		isLoading: false,
 		isIE11: false,
+		localKey: this.localKey,
 		months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		query: '',
 		start: '23 Jan',
@@ -38,7 +39,7 @@ new Vue({
 			//this.checkLiveConfirmed();
 
 			// Get a local stored copy
-			var localData = localStorage.getItem('covid_stats');
+			var localData = localStorage.getItem(this.localKey);
 			//var localData = '';
 			if (localData) {
 				localData = JSON.parse(localData);
@@ -103,7 +104,8 @@ new Vue({
 					data.Countries = data.Countries.filter(country => {
 						if (
 							country.Country.trim() != '' &&
-							!this.duplicateCountries.includes(country.Country)
+							!this.duplicateCountries.includes(country.Country) &&
+							country.TotalConfirmed > 0
 						) {
 							// give US a new slug
 							if (country.Slug == 'us') {
@@ -123,7 +125,7 @@ new Vue({
 					data.ActiveCountry = this.activeCountry;
 					data.globalStats = this.globalStats;
 
-					localStorage.setItem('covid_stats', JSON.stringify(data));
+					localStorage.setItem(this.localKey, JSON.stringify(data));
 					this.setData(data);
 
 					this.setActiveCountry();
@@ -136,10 +138,10 @@ new Vue({
 					if (data.length > 0) {
 						this.buildChart(data);
 
-						var localData = JSON.parse(localStorage.getItem('covid_stats'));
+						var localData = JSON.parse(localStorage.getItem(this.localKey));
 						localData.ActiveCountryChart = this.chartPoints;
 						localData.ActiveCountryChartStart = this.start;
-						localStorage.setItem('covid_stats', JSON.stringify(localData));
+						localStorage.setItem(this.localKey, JSON.stringify(localData));
 					}
 				});
 		},
@@ -192,9 +194,9 @@ new Vue({
 					if (data.country_name) {
 						this.activeCountry = data.country_name.toLowerCase();
 
-						var localData = JSON.parse(localStorage.getItem('covid_stats'));
+						var localData = JSON.parse(localStorage.getItem(this.localKey));
 						localData.ActiveCountry = this.activeCountry;
-						localStorage.setItem('covid_stats', JSON.stringify(localData));
+						localStorage.setItem(this.localKey, JSON.stringify(localData));
 
 						this.setActiveCountryStats();
 						this.fetchActiveCountryHistory();

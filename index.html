@@ -570,11 +570,8 @@
 					<div>
 						<h1>COVID-19 STATS</h1>
 
-						<div class="date">
-							Updated daily.
-							<template v-if="date"
-								>Last updated: {{ date | prettyDate }}
-							</template>
+						<div v-if="date" class="date">
+							Last updated: {{ date | prettyDate }}
 						</div>
 					</div>
 

@@ -31,3 +31,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+v2.html
+js/script-v2.js
