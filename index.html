@@ -12,12 +12,10 @@
 
 		<link rel="icon" type="image/png" href="icon.png" />
 		<link rel="apple-touch-icon" href="icon-128.png">
-		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css?family=Lato:400,900"
-			rel="stylesheet"
-			type="text/css"
-		/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" /></noscript>
 
 		<meta content="COVID-19 Stats" property="og:title" />
 		<meta
@@ -514,7 +512,7 @@
 				}
 				
 				.stats strong {
-					font-size: 1.2rem;
+					font-size: 1.15rem;
 				}
 				
 				[class*='block-grid-'] [class*='block-grid-'] {
