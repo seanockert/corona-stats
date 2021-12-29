@@ -6,7 +6,7 @@
 		<title>COVID-19 Stats</title>
 		<meta
 			name="description"
-			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
+			content="Compare COVID-19 cases and deaths for your own country and worldwide."
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -19,7 +19,7 @@
 
 		<meta content="COVID-19 Stats" property="og:title" />
 		<meta
-			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
+			content="Compare COVID-19 cases and deaths for your own country and worldwide."
 			property="og:description"
 		/>
 		<meta content="share_img.png" property="og:image" />
@@ -29,7 +29,7 @@
 
 		<meta content="COVID-19 Stats" property="twitter:title" />
 		<meta
-			content="Compare COVID-19 cases, deaths, and recoveries for your own country and worldwide."
+			content="Compare COVID-19 cases and deaths for your own country and worldwide."
 			property="twitter:description"
 		/>
 		<meta content="share_img.png" property="twitter:image:src" />
@@ -95,10 +95,6 @@
 				background-color: #d0cfe8;
 			}
 				
-			button.recovered {
-				margin-right: 0;
-			}
-
 			button.active {
 				background-color: #413DAB;
 				color: #fff;
@@ -106,10 +102,6 @@
 
 			button.active.deaths {
 				background-color: #e62864;
-			}
-
-			button.active.recovered {
-				background-color: #3ead23;
 			}
 
 			button svg {
@@ -186,8 +178,8 @@
 				flex-wrap: nowrap;
 			}
 
-			.block-grid-3 > * {
-				flex: 0 0 33.33%;
+			.block-grid-2 > * {
+				flex: 0 0 50%;
 			}
 
 			.block-grid-4 > * {
@@ -306,11 +298,6 @@
 
 			.stats .deaths {
 				color: #e62864;
-			}
-
-			.stats .recovered {
-				color: #3ead23;
-				margin-right: 0;
 			}
 
 			.stats svg {
@@ -444,7 +431,7 @@
 				}		
 				
 				.stats li {
-					flex: 0 0 33.33%;
+					flex: 0 0 50%;
 					padding: 0 0.375rem 0 0;
 				}
 
@@ -620,26 +607,6 @@
 								</svg>
 								Deaths
 							</button>
-							<button
-								@click="sortBy('TotalRecovered')"
-								:class="{ 'recovered': true, 'active': sort == 'TotalRecovered' }"
-							>
-								<svg
-									aria-hidden="true"
-									focusable="false"
-									height="18"
-									width="18"
-									role="img"
-									viewBox="0 0 496 520"
-								>
-									<path
-										fill="currentColor"
-										d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-									></path>
-								</svg>
-
-								Recovered
-							</button>
 						</div>
 						<div>
 							<label for="search" class="hidden">Search</label>
@@ -734,32 +701,6 @@
 								>
 							</span>
 						</li>
-						<li class="recovered text-center">
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								height="18"
-								width="18"
-								role="img"
-								viewBox="0 0 496 512"
-							>
-								<title>Recovered</title>
-								<path
-									fill="currentColor"
-									d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-								></path>
-							</svg>
-							<span>
-								<strong
-									>{{activeCountryStats.TotalRecovered |
-									numberWithCommas}}</strong
-								>
-								<small
-									>{{activeCountryStats.NewRecovered | numberWithCommas}}
-									new</small
-								>
-							</span>
-						</li>
 					</ul>
 				</section>
 				<section v-if="globalStats && query == ''" class="featured">
@@ -812,28 +753,6 @@
 								>
 							</span>
 						</li>
-						<li class="recovered text-center">
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								height="18"
-								width="18"
-								role="img"
-								viewBox="0 0 496 512"
-							>
-								<title>Recovered</title>
-								<path
-									fill="currentColor"
-									d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-								></path>
-							</svg>
-							<span>
-								<strong
-									>{{globalStats.TotalRecovered |
-									numberWithCommas}}</strong
-								>
-							</span>
-						</li>
 					</ul>
 				</section>
 				<section class="countries">
@@ -843,7 +762,7 @@
 							<li :key="country.Slug" v-if="country.TotalConfirmed > 0">
 								<div class="box shadow">
 									<h3>{{ country.Country }}</h3>
-									<ul class="block-grid-3 stats">
+									<ul class="block-grid-2 stats">
 										<li class="cases">
 											<svg
 												aria-hidden="true"
@@ -892,31 +811,6 @@
 												>
 												<small
 													>{{country.NewDeaths | numberWithCommas}} new</small
-												>
-											</span>
-										</li>
-										<li class="recovered">
-											<svg
-												aria-hidden="true"
-												focusable="false"
-												height="18"
-												width="18"
-												role="img"
-												viewBox="0 0 496 512"
-											>
-												<title>Recovered</title>
-												<path
-													fill="currentColor"
-													d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-												></path>
-											</svg>
-											<span>
-												<strong
-													>{{country.TotalRecovered | numberWithCommas}}</strong
-												>
-												<small
-													>{{country.NewRecovered | numberWithCommas}}
-													new</small
 												>
 											</span>
 										</li>
