@@ -40,7 +40,6 @@ new Vue({
 
 			// Get a local stored copy
 			var localData = localStorage.getItem(this.localKey);
-			//var localData = '';
 			if (localData) {
 				localData = JSON.parse(localData);
 
@@ -222,7 +221,6 @@ new Vue({
 				var max = Math.max.apply(Math, this);
 				var min = Math.min.apply(Math, this);
 				return this.map(num => {
-					//if (num > 0) num = Math.log(num);
 					return 100 - ((scaledMax - scaledMin) * (num - min)) / (max - min) + scaledMin;
 				});
 			};
@@ -230,10 +228,7 @@ new Vue({
 			this.chartPoints = '';
 
 			var start = new Date(data[0].Date);
-			this.start = start.getDate() + ' ' + this.months[start.getMonth()];
-
-			/*var end = new Date(data[data.length - 1].Date);
-			this.end = end.getDate() + ' ' + this.months[end.getMonth()];*/
+			this.start = start.getDate() + ' ' + this.months[start.getMonth()] + ' ' + start.getFullYear();
 
 			var y = data.map(point => point.Cases);
 			var scaledY = y.scaleBetween(0, 100);

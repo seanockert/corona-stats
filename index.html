@@ -76,9 +76,10 @@
 			}
 
 			button {
-				background-color: rgba(255,255,255,0.8);
+				background-color: rgba(0,0,0,0.2);
 				border: none;
 				border-radius: 10px;
+				color: rgba(255,255,255,0.8);
 				font-weight: bold;
 				line-height: 1.2;
 				margin: 0 0.375rem 0.375rem 0;
@@ -88,20 +89,21 @@
 
 			button:hover,
 			button:focus {
-				background-color: #fff;
+				background-color: rgba(0,0,0,0.3);
 			}
 
 			button:active {
-				background-color: #d0cfe8;
+				background-color: rgba(0,0,0,0.4);;
 			}
-				
+
 			button.active {
-				background-color: #413DAB;
-				color: #fff;
+				background-color: rgba(255,255,255,0.8);
+				color: #413DAB;
 			}
 
 			button.active.deaths {
 				background-color: #e62864;
+				color: #fff;
 			}
 
 			button svg {
@@ -155,7 +157,7 @@
 			.flex > * {
 				flex: 1 1 auto;
 			}
-			
+
 			.banner {
 				background-color: #e62864;
 				color: #fff;
@@ -194,7 +196,7 @@
 				text-align: center;
 				width: 200px;
 			}
-			
+
 			.loading button {
 				color: inherit;
 				font-weight: normal;
@@ -209,15 +211,15 @@
 			.text-center {
 				text-align: center;
 			}
-			
+
 			.text-right {
 				text-align: right;
 			}
-				
+
 			header, main {
 				padding: 0.75rem;
 			}
-			
+
 			header {
 				background: linear-gradient(-30deg, #4c48bb 10%, #6662EB);
 				color: #fff;
@@ -225,14 +227,14 @@
 				padding: 1.5rem 0.75rem 1.8rem 0.75rem;
 				position: relative;
 			}
-			
+
 			#header-bottom {
 				position: absolute;
 		    bottom: -1px;
 		    width: 100%;
 		    height: 7px;
-			}			
-			
+			}
+
 			h1 {
 				font-size: 2rem;
 				line-height: 1;
@@ -242,7 +244,7 @@
 			.date {
 				opacity: 0.6;
 			}
-			
+
 			.box {
 				padding: 1.5rem;
 				background: #fff;
@@ -254,7 +256,7 @@
 				line-height: 1.2;
 				margin-top: 0;
 			}
-			
+
 			.stats {
 				position: relative;
 			}
@@ -279,8 +281,8 @@
 				font-size: 1.25rem;
 				line-height: 1;
 				margin-bottom: 0.175rem;
-			}			
-			
+			}
+
 			.stats strong span {
 				background-color: #ffe3ec;
 				border-radius: 4px;
@@ -321,11 +323,11 @@
 			.featured .stats {
 				align-items: center;
 			}
-			
+
 			.featured .stats strong {
 				font-size: 1.4rem;
 			}
-			
+
 			.featured .chart {
 				bottom: -1rem;
 				color: #d0cfe8;
@@ -337,7 +339,7 @@
 				max-width: 100%;
 				z-index: -1;
 			}
-			
+
 			.sticky {
 				position: sticky;
   			top: 0;
@@ -410,26 +412,26 @@
 			footer a:hover {
 				opacity: 0.8;
 			}
-			
+
 			@media screen and (min-width: 1440px) {
 				.box {
 					padding: 2rem;
 				}
 			}
-			
+
 			@media screen and (max-width: 1028px) {
 				[class*='block-grid-'] > * {
 					flex: 0 0 50%;
-				}	
-						
+				}
+
 				.featured {
 					text-align: center;
 				}
-				
+
 				.featured .block-grid-4 > * {
 					flex: 0 0 25%;
-				}		
-				
+				}
+
 				.stats li {
 					flex: 0 0 50%;
 					padding: 0 0.375rem 0 0;
@@ -449,28 +451,28 @@
 				header label {
 					display: none;
 				}
-				
-				#search { 
-					max-width: 100%;	
+
+				#search {
+					max-width: 100%;
 				}
-	
+
 				.featured {
-					padding: 1.5rem 0 2.5rem 0;	
+					padding: 1.5rem 0 2.5rem 0;
 				}
-				
+
 				.featured .block-grid-4 > * {
-					flex: 0 0 33.33%;
-				}		
-				
+					flex: 0 0 50%;
+				}
+
 				.featured .block-grid-4 > :first-child {
 					flex: 0 0 100%;
-				}		
-				
+				}
+
 				.featured .chart {
 					bottom: -1.5rem;
 					left: 0;
 				}
-				
+
 				.sticky {
 					position: relative;
 				}
@@ -489,19 +491,19 @@
 				main {
 					padding: 0.75rem 0;
 				}
-				
+
 				.featured .stats strong {
 					font-size: 1.3rem;
 				}
-				
+
 				.featured .chart {
 					padding: 0 0.75rem;
 				}
-				
+
 				.stats strong {
 					font-size: 1.15rem;
 				}
-				
+
 				[class*='block-grid-'] [class*='block-grid-'] {
 					flex-wrap: wrap;
 				}
@@ -510,16 +512,16 @@
 					flex: 0 0 100%;
 				}
 			}
-			
+
 			@media screen and (max-width: 349px) {
 				button {
 					padding: 0.75rem 0.45rem;
 				}
-				
+
 				button svg {
 					margin-right: 3px;
 				}
-				
+
 				.stats strong {
 					font-size: 1rem;
 				}
@@ -628,13 +630,13 @@
 			    </g>
 			</svg>
 			</header>
-			
+
 			<main>
 				<section v-if="activeCountryStats && query == ''" class="featured sticky">
 					<ul class="block-grid-4 stats">
 						<li>
 							<h3>{{activeCountryStats.Country}}</h3>
-								
+
 							<svg v-if="chartPoints != ''" viewBox="0 0 500 103" class="chart">
 								<text y="90" fill="#9E9DBD">{{ start }}</text>
 							  <polyline
@@ -691,7 +693,7 @@
 							<span>
 								<strong
 									>{{activeCountryStats.TotalDeaths | numberWithCommas}}
-									<span>{{activeCountryStats.TotalDeaths | deathsPercent activeCountryStats.TotalConfirmed}}</span> 
+									<span>{{activeCountryStats.TotalDeaths | deathsPercent activeCountryStats.TotalConfirmed}}</span>
 									</strong
 								>
 								<small
@@ -816,10 +818,10 @@
 										</li>
 									</ul>
 								</div>
-							</li>		
+							</li>
 						</template>
 					</ul>
-					
+
 					<p v-show="filteredCountries.length == 0" class="loading">No countries found. <button @click="filterCountries(true)">Show all</button></p>
 				</section>
 			</main>
