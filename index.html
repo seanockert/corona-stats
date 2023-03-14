@@ -411,7 +411,7 @@
 
 			footer a:hover {
 				opacity: 0.8;
-			}
+			}`
 
 			@media screen and (min-width: 1440px) {
 				.box {
@@ -428,8 +428,8 @@
 					text-align: center;
 				}
 
-				.featured .block-grid-4 > * {
-					flex: 0 0 25%;
+				.featured .block-grid-3 > :first-child {
+					flex: 0 0 100%;
 				}
 
 				.stats li {
@@ -633,7 +633,7 @@
 
 			<main>
 				<section v-if="activeCountryStats && query == ''" class="featured sticky">
-					<ul class="block-grid-4 stats">
+					<ul class="block-grid-3 stats">
 						<li>
 							<h3>{{activeCountryStats.Country}}</h3>
 
@@ -706,7 +706,7 @@
 					</ul>
 				</section>
 				<section v-if="globalStats && query == ''" class="featured">
-					<ul class="block-grid-4 stats">
+					<ul class="block-grid-3 stats">
 						<li>
 							<h3>Global</h3>
 						</li>
